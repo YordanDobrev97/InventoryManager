@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InventoryManager.Data.Repositories
 {
@@ -386,12 +384,37 @@ namespace InventoryManager.Data.Repositories
             return category.Items.Remove(item);
         }
 
+        public bool Save(string categoryID,
+            string itemID, string itemName, string itemDescription, double itemPrice, int itemQuantity, string itemType)
+        {
+            var category = this.FindCategory(categoryID);
+
+            if (category == null) return false;
+
+            if (itemID != null)
+            {
+                category.Items.RemoveAll(x => x.ID == itemID);
+            }
+
+            category.Items.Add(new Item()
+            {
+                ID = Guid.NewGuid().ToString(),
+                Name = itemName,
+                Description = itemDescription,
+                Price = itemPrice,
+                Quantity = itemQuantity,
+                Type = itemType,
+            });
+
+            return true;
+        }
+
         public List<Category> GetCategories()
         {
             return category_db;
         }
 
-        public List<string> GetSupportedItemsType()
+        public List<string> SupportedItemsType()
         {
             return new List<string>
             {
@@ -404,27 +427,32 @@ namespace InventoryManager.Data.Repositories
 
         private Category FindCategory(string categoryId)
         {
-            int indexCategory = 0;
-            var allCategories = new Queue<Category>();
-            allCategories.Enqueue(category_db[indexCategory]);
-
             Category foundedCategory = null;
-            while (allCategories.Count > 0)
-            {
-                var category = allCategories.Dequeue();
-                if (category.ID == categoryId)
-                {
-                    foundedCategory = category;
-                    break;
-                }
 
-                foreach (var subCategory in category.SubCategories)
+            foreach (var currentCategory in category_db)
+            {
+                var allCategories = new Queue<Category>();
+                allCategories.Enqueue(currentCategory);
+
+                while (allCategories.Count > 0)
                 {
-                    allCategories.Enqueue(subCategory);
+                    var category = allCategories.Dequeue();
+                    if (category.ID == categoryId)
+                    {
+                        foundedCategory = category;
+                        break;
+                    }
+
+                    if (category.SubCategories != null)
+                    {
+                        foreach (var subCategory in category.SubCategories)
+                        {
+                            allCategories.Enqueue(subCategory);
+                        }
+                    }
                 }
             }
 
-            
             return foundedCategory;
         }
     }

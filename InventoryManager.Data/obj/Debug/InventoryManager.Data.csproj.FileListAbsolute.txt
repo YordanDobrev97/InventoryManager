@@ -1,6 +1,0 @@
-C:\Users\DELL\Desktop\InventoryManager\InventoryManager\InventoryManager.Data\bin\Debug\InventoryManager.Data.dll
-C:\Users\DELL\Desktop\InventoryManager\InventoryManager\InventoryManager.Data\bin\Debug\InventoryManager.Data.pdb
-C:\Users\DELL\Desktop\InventoryManager\InventoryManager\InventoryManager.Data\obj\Debug\InventoryManager.Data.csproj.CoreCompileInputs.cache
-C:\Users\DELL\Desktop\InventoryManager\InventoryManager\InventoryManager.Data\obj\Debug\InventoryManager.Data.dll
-C:\Users\DELL\Desktop\InventoryManager\InventoryManager\InventoryManager.Data\obj\Debug\InventoryManager.Data.pdb
-C:\Users\DELL\Desktop\InventoryManager\InventoryManager\InventoryManager.Data\obj\Debug\InventoryManager.Data.csproj.AssemblyReference.cache

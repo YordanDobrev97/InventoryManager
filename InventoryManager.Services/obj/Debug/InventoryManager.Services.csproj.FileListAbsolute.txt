@@ -1,9 +1,0 @@
-C:\Users\DELL\Desktop\InventoryManager\InventoryManager\InventoryManager.Services\bin\Debug\InventoryManager.Services.dll
-C:\Users\DELL\Desktop\InventoryManager\InventoryManager\InventoryManager.Services\bin\Debug\InventoryManager.Services.pdb
-C:\Users\DELL\Desktop\InventoryManager\InventoryManager\InventoryManager.Services\bin\Debug\InventoryManager.Data.dll
-C:\Users\DELL\Desktop\InventoryManager\InventoryManager\InventoryManager.Services\bin\Debug\InventoryManager.Data.pdb
-C:\Users\DELL\Desktop\InventoryManager\InventoryManager\InventoryManager.Services\obj\Debug\InventoryManager.Services.csproj.AssemblyReference.cache
-C:\Users\DELL\Desktop\InventoryManager\InventoryManager\InventoryManager.Services\obj\Debug\InventoryManager.Services.csproj.CoreCompileInputs.cache
-C:\Users\DELL\Desktop\InventoryManager\InventoryManager\InventoryManager.Services\obj\Debug\InventoryManager.Services.csproj.CopyComplete
-C:\Users\DELL\Desktop\InventoryManager\InventoryManager\InventoryManager.Services\obj\Debug\InventoryManager.Services.dll
-C:\Users\DELL\Desktop\InventoryManager\InventoryManager\InventoryManager.Services\obj\Debug\InventoryManager.Services.pdb

@@ -28,7 +28,7 @@
                 <TreeView.Resources>
                     <HierarchicalDataTemplate DataType="{x:Type vm:CategoryViewModel}" ItemsSource="{Binding SubCategories}">
                         <TextBlock Text="{Binding Path=Name}" />
-                    </HierarchicalDataTemplate>                    
+                    </HierarchicalDataTemplate>
                 </TreeView.Resources>
                 <e:Interaction.Behaviors>
                     <behaviours:BindableSelectedItemBehavior SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" />
@@ -41,8 +41,10 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-
-            <ListBox ItemsSource="{Binding SelectedCategory.Items}" SelectedItem="{Binding SelectedItem}">
+             
+            <ListBox Name="listItems" ItemsSource="{Binding SelectedCategory.Items}" 
+                     SelectedItem="{Binding SelectedItem}"
+            HorizontalAlignment="Left" VerticalAlignment="Top">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal"/>
@@ -62,7 +64,8 @@
                 </ListBox.ItemTemplate>
             </ListBox>
 
-            <Button Content="New Item" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 5 5 5"/>
+            <Button Content="New Item" HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" Margin="0 5 5 5" Click="AddItem" />
 
             <Grid Grid.Row="1" Margin="0 10 0 0">
                 <Grid.RowDefinitions>
@@ -74,7 +77,10 @@
 
                 <TextBlock Text="Item Details" FontSize="18" FontWeight="Bold" Margin="5 0 0 0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Content="Save" Margin="0 0 5 0"/>
+                    <Button Name="SaveBtn" Content="Save" Margin="0 0 5 0" 
+                            Command="{Binding SaveCommand}"
+                            CommandParameter="{Binding SelectedItem}"/>
+                    
                     <Button Content="Delete" Margin="0 0 5 0" 
                             Command="{Binding DeleteCommand}"
                             CommandParameter="{Binding SelectedItem}"/>
@@ -93,7 +99,13 @@
 
                     <StackPanel Margin="5" Grid.Column="1">
                         <TextBlock Text="Type"/>
-                        <TextBox Text="{Binding SelectedItem.Type}"/>
+                        <ComboBox HorizontalAlignment="Left"   
+                                  Margin="0"   
+                                  Width="100"
+                                  IsSynchronizedWithCurrentItem="True"
+                                  ItemsSource="{Binding Types}"
+                                  SelectedItem="{Binding SelectedItem.Type}"/>
+                            
                     </StackPanel>
                 </Grid>
 

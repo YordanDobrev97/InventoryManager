@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace InventoryManager.ViewModels
@@ -18,7 +19,6 @@ namespace InventoryManager.ViewModels
         public MainViewModel()
         {
             _inventoryManagerService = new InventoryManagerService();
-
             InitCategories();
         }
 
@@ -44,6 +44,7 @@ namespace InventoryManager.ViewModels
         }
 
         private DelegateCommand<ItemViewModel> deleteCommand;
+
         public ICommand DeleteCommand
         {
             get
@@ -69,6 +70,51 @@ namespace InventoryManager.ViewModels
             }
         }
 
+        private DelegateCommand<ItemViewModel> saveCommand;
+        public ICommand SaveCommand
+        {
+            get
+            {
+                if (saveCommand == null)
+                    saveCommand = new DelegateCommand<ItemViewModel>(
+                        (ivm) =>
+                        {
+                            if (SelectedCategory != null)
+                            {
+                                //save in repository
+                                _inventoryManagerService
+                                .Save(SelectedCategory.ID, ivm.ID, ivm.Name, ivm.Description, ivm.Price, ivm.Quantity, ivm.Type);
+                            }
+                        },
+                        (ivm) =>
+                        {
+                            return ivm != null;
+                        });
+
+                return saveCommand;
+            }
+        }
+
+        private ItemViewModel newItem;
+        public ItemViewModel NewItem
+        {
+            get { return newItem; }
+            set { newItem = value; OnPropertyChanged(); }
+        }
+
+        public List<string> Types
+        {
+            get
+            {
+                return new List<string>()
+                {
+                    "Type 1",
+                    "Type 2",
+                    "Type 3",
+                    "Type 4"
+                };
+            }
+        }
 
         private void InitCategories()
         {

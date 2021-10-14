@@ -1,4 +1,6 @@
-﻿using InventoryManager.ViewModels;
+﻿using InventoryManager.Data.Models;
+using InventoryManager.Data.Repositories;
+using InventoryManager.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +28,15 @@ namespace InventoryManager
             InitializeComponent();
 
             DataContext = new MainViewModel();
-        } 
+        }
+
+        private void AddItem(object sender, RoutedEventArgs e)
+        {
+            var viewModel = DataContext as MainViewModel;
+            viewModel.SelectedCategory.Items.Add(new ItemViewModel()
+            {
+                Name = "New Item",
+            });
+        }
     }
 }

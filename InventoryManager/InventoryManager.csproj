@@ -115,6 +115,10 @@
     <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InventoryManager.Data\InventoryManager.Data.csproj">
+      <Project>{415D1930-8805-4A6A-9636-773A90D7B6BB}</Project>
+      <Name>InventoryManager.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InventoryManager.Services\InventoryManager.Services.csproj">
       <Project>{bb3295cf-3aae-486f-805f-28799e86ffb4}</Project>
       <Name>InventoryManager.Services</Name>
