@@ -380,7 +380,13 @@ namespace InventoryManager.Data.Repositories
         public bool DeleteItem(string categoryID, string itemID)
         {
             var category = this.FindCategory(categoryID);
+
+            if (category == null) return false;
+
             var item = category.Items.FirstOrDefault(x => x.ID == itemID);
+
+            if (item == null) return false;
+
             return category.Items.Remove(item);
         }
 
