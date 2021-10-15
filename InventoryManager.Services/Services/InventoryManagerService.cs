@@ -40,13 +40,6 @@ namespace InventoryManager.Services.Services
             return _categoriesRepository.Save(categoryID, itemID, itemName, itemDescription, itemPrice, itemQuantity, itemType);
         }
 
-        public bool AddItem(string itemID, string itemName, string itemDescription,
-            double itemPrice, int itemQuantity, string itemType)
-        {
-
-            return false;
-        }
-
         private CategoryDTO CovertCategory(Category category)
         {
             return new CategoryDTO

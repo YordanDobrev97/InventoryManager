@@ -95,13 +95,6 @@ namespace InventoryManager.ViewModels
             }
         }
 
-        private ItemViewModel newItem;
-        public ItemViewModel NewItem
-        {
-            get { return newItem; }
-            set { newItem = value; OnPropertyChanged(); }
-        }
-
         public List<string> Types
         {
             get
